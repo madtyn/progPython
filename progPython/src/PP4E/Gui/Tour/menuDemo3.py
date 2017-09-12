@@ -1,27 +1,31 @@
-#!/usr/local/bin/python
+#!/usr/bin/python3
 """
 same, but add photos to toolbar as preexisting GIFs with standard tkinter
 """
+from tkinter import Frame, Label, Menu, Button, PhotoImage  # get widget classes
+from tkinter import YES, BOTH, LEFT, RIGHT, BOTTOM, DISABLED, SUNKEN, RIDGE, X, Y
+from tkinter.messagebox import askyesno, showinfo, showerror  # get standard dialogs
 
-from tkinter import *                              # get widget classes
-from tkinter.messagebox import *                   # get standard dialogs
 
-class NewMenuDemo(Frame):                          # an extended frame
-    def __init__(self, parent=None):               # attach to top-level?
-        Frame.__init__(self, parent)               # do superclass init
+class NewMenuDemo(Frame):  # an extended frame
+    def __init__(self, parent=None):  # attach to top-level?
+        Frame.__init__(self, parent)  # do superclass init
         self.pack(expand=YES, fill=BOTH)
-        self.createWidgets()                       # attach frames/widgets
-        self.master.title("Toolbars and Menus")    # set window-manager info
-        self.master.iconname("tkpython")           # label when iconified
+        self.createWidgets()  # attach frames/widgets
+        self.master.title("Toolbars and Menus")  # set window-manager info
+        self.master.iconname("tkpython")  # label when iconified
 
     def createWidgets(self):
+        '''
+        Creates the widgets
+        '''
         self.makeMenuBar()
         self.makeToolBar()
-        L = Label(self, text='Menu and Toolbar Demo')
-        L.config(relief=SUNKEN, width=40, height=10, bg='white')
-        L.pack(expand=YES, fill=BOTH)
+        label = Label(self, text='Menu and Toolbar Demo')
+        label.config(relief=SUNKEN, width=40, height=10, bg='white')
+        label.pack(expand=YES, fill=BOTH)
 
-    #def makeToolBar(self):
+    # def makeToolBar(self):
     #    toolbar = Frame(self, cursor='hand2', relief=SUNKEN, bd=2)
     #    toolbar.pack(side=BOTTOM, fill=X)
     #    Button(toolbar, text='Quit',  command=self.quit    ).pack(side=RIGHT)
@@ -43,43 +47,68 @@ class NewMenuDemo(Frame):                          # an extended frame
         Button(toolbar, text='Quit', command=self.quit).pack(side=RIGHT, fill=Y)
 
     def makeMenuBar(self):
+        '''
+        Makes the menubar
+        '''
         self.menubar = Menu(self.master)
-        self.master.config(menu=self.menubar)    # master=top-level window
+        self.master.config(menu=self.menubar)  # master=top-level window
         self.fileMenu()
         self.editMenu()
         self.imageMenu()
 
     def fileMenu(self):
+        '''
+        Makes the filemenu
+        '''
         pulldown = Menu(self.menubar)
         pulldown.add_command(label='Open...', command=self.notdone)
-        pulldown.add_command(label='Quit',    command=self.quit)
+        pulldown.add_command(label='Quit', command=self.quit)
         self.menubar.add_cascade(label='File', underline=0, menu=pulldown)
 
     def editMenu(self):
+        '''
+        Makes the editmenu
+        '''
         pulldown = Menu(self.menubar)
-        pulldown.add_command(label='Paste',   command=self.notdone)
-        pulldown.add_command(label='Spam',    command=self.greeting)
+        pulldown.add_command(label='Paste', command=self.notdone)
+        pulldown.add_command(label='Spam', command=self.greeting)
         pulldown.add_separator()
-        pulldown.add_command(label='Delete',  command=self.greeting)
+        pulldown.add_command(label='Delete', command=self.greeting)
         pulldown.entryconfig(4, state=DISABLED)
         self.menubar.add_cascade(label='Edit', underline=0, menu=pulldown)
 
     def imageMenu(self):
+        '''
+        Makes the imagemenu
+        '''
         photoFiles = ('ora-lp4e.gif', 'pythonPowered.gif', 'python_conf_ora.gif')
         pulldown = Menu(self.menubar)
         self.photoObjs = []
         for file in photoFiles:
             img = PhotoImage(file='../gifs/' + file)
             pulldown.add_command(image=img, command=self.notdone)
-            self.photoObjs.append(img)   # keep a reference
+            self.photoObjs.append(img)  # keep a reference
         self.menubar.add_cascade(label='Image', underline=0, menu=pulldown)
 
     def greeting(self):
+        '''
+        Shows a greeting
+        '''
         showinfo('greeting', 'Greetings')
+
     def notdone(self):
+        '''
+        Show a 'not done' message
+        '''
         showerror('Not implemented', 'Not yet available')
+
     def quit(self):
+        '''
+        Quits the app
+        '''
         if askyesno('Verify quit', 'Are you sure you want to quit?'):
             Frame.quit(self)
 
-if __name__ == '__main__':  NewMenuDemo().mainloop()  # if I'm run as a script
+
+if __name__ == '__main__':
+    NewMenuDemo().mainloop()  # if I'm run as a script

@@ -1,4 +1,4 @@
-#!/usr/local/bin/python
+#!/usr/bin/python3
 """
 Tk8.0 style main window menus
 menu/tool bars packed before middle, fill=X (pack first=clip last);

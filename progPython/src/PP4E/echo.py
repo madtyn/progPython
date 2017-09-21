@@ -2,4 +2,4 @@
    Echo program
 '''
 print('Spam')
-input('press Enter')
+input('Press Enter')

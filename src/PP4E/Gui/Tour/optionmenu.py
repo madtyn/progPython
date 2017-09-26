@@ -1,7 +1,8 @@
 """
     OptionMenu example
 """
-from tkinter import Tk, Button, OptionMenu, StringVar, X
+from tkinter import Tk, Button, OptionMenu, StringVar
+from tkinter import X
 
 root = Tk()
 

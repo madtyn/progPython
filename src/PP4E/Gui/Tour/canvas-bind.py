@@ -1,12 +1,15 @@
 # bind events on both canvas and its items
-from tkinter import *
+from tkinter import Tk, Canvas, mainloop
+
 
 def onCanvasClick(event):
     print('Got canvas click', event.x, event.y, event.widget)
 
+
 def onObjectClick(event):
     print('Got object click', event.x, event.y, event.widget, end=' ')
     print(event.widget.find_closest(event.x, event.y))  # find text object's ID
+
 
 root = Tk()
 canv = Canvas(root, width=100, height=100)

@@ -20,6 +20,7 @@ class CanvasEventsDemo(canvasDraw_tags.CanvasEventsDemo):
         allmoves = [(+20, 0), (0, +20), (-20, 0), (0, -20)] * 5
         self.moveEm(tag, allmoves)
 
+
 if __name__ == '__main__':
     CanvasEventsDemo()
     mainloop()

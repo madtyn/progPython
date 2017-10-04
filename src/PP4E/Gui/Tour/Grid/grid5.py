@@ -13,6 +13,7 @@ for i in range(5):
         cols.append(ent)
     rows.append(cols)
 
+
 def onPress():
     for row in rows:
         for col in row:

@@ -1,10 +1,13 @@
 # simple 2D table, in default Tk root window
 
-from tkinter import *
+from tkinter import mainloop, Label
+from tkinter import RIDGE, NSEW
+
 
 for i in range(5):
     for j in range(4):
         lab = Label(text='%d.%d' % (i, j), relief=RIDGE)
         lab.grid(row=i, column=j, sticky=NSEW)
+
 
 mainloop()

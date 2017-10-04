@@ -1,8 +1,13 @@
 "demo advanced tag and text interfaces"
 
-from tkinter import *
+from tkinter import Tk, Button, Text, PhotoImage
+from tkinter import YES, END, BOTH
 root = Tk()
-def hello(event): print('Got tag event')
+
+
+def hello(event):
+    print('Got tag event')
+
 
 # make and config a Text
 text = Text()
@@ -16,7 +21,7 @@ btn = Button(text, text='Spam', command=lambda: hello(0))    # embed a button
 btn.pack()
 text.window_create(END, window=btn)                          # embed a photo
 text.insert(END, '\n\n')
-img = PhotoImage(file='../gifs/PythonPowered.gif')
+img = PhotoImage(file='../gifs/pythonPowered.gif')
 text.image_create(END, image=img)
 
 # apply tags to substrings

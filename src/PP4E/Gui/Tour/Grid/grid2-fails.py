@@ -2,7 +2,7 @@
 FAILS-- can't grid and pack in same parent container (here, root window)
 """
 
-from tkinter import *
+from tkinter import Tk, mainloop, Button
 from grid2 import gridbox, packbox
 
 root = Tk()

@@ -1,4 +1,5 @@
-from tkinter import *
+from tkinter import RIDGE, SUNKEN
+from tkinter import Label, Entry, mainloop
 colors = ['red', 'green', 'orange', 'white', 'yellow', 'blue']
 
 r = 0

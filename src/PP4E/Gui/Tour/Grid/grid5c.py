@@ -1,12 +1,15 @@
 # recode as an embeddable class
 
-from tkinter import *
+from tkinter import Tk, Label, Button, Frame, Entry, mainloop
+from tkinter import RIDGE, SUNKEN, END, NSEW
 from tkinter.filedialog import askopenfilename
-from PP4E.Gui.Tour.quitter import Quitter          # reuse, pack, and grid
+from src.PP4E.Gui.Tour.quitter import Quitter          # reuse, pack, and grid
+
 
 class SumGrid(Frame):
     def __init__(self, parent=None, numrow=5, numcol=5):
-        Frame.__init__(self, parent)
+        super().__init__(parent)
+        #Frame.__init__(self, parent)
         self.numrow = numrow                       # I am a frame container
         self.numcol = numcol                       # caller packs or grids me
         self.makeWidgets(numrow, numcol)           # else only usable one way
@@ -54,18 +57,19 @@ class SumGrid(Frame):
             for col in row:
                 col.delete('0', END)                          # delete content
                 col.insert(END, '0.0')                        # preserve display
-        for sum in self.sums:
-            sum.config(text='?')
+        for sum_ in self.sums:
+            sum_.config(text='?')
 
     def onLoad(self):
         file = askopenfilename()
         if file:
             for row in self.rows:
-                for col in row: col.grid_forget()             # erase current gui
-            for sum in self.sums:
-                sum.grid_forget()
+                for col in row:
+                    col.grid_forget()             # erase current gui
+            for sum_ in self.sums:
+                sum_.grid_forget()
 
-            filelines   = open(file, 'r').readlines()         # load file data
+            filelines = open(file, 'r').readlines()         # load file data
             self.numrow = len(filelines)                      # resize to data
             self.numcol = len(filelines[0].split())
             self.makeWidgets(self.numrow, self.numcol)
@@ -75,6 +79,7 @@ class SumGrid(Frame):
                 for col in range(self.numcol):
                     self.rows[row][col].delete('0', END)
                     self.rows[row][col].insert(END, fields[col])
+
 
 if __name__ == '__main__':
     import sys

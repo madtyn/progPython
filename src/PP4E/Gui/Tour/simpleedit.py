@@ -3,12 +3,14 @@ add common edit tools to ScrolledText by inheritance;
 composition (embedding) would work just as well here;
 this is not robust!--see PyEdit for a feature superset;
 """
-
-from tkinter import *
+import sys
+from tkinter import X, LEFT, INSERT, END, SEL, SEL_FIRST, SEL_LAST
+from tkinter import Frame, Button, TclError
 from tkinter.simpledialog import askstring
 from tkinter.filedialog   import asksaveasfilename
-from quitter      import Quitter
+from quitter import Quitter
 from scrolledtext import ScrolledText                     # here, not Python's
+
 
 class SimpleEditor(ScrolledText):                         # see PyEdit for more
     def __init__(self, parent=None, file=None):
@@ -53,6 +55,7 @@ class SimpleEditor(ScrolledText):                         # see PyEdit for more
                 self.text.mark_set(INSERT, pastit)         # set insert mark
                 self.text.see(INSERT)                      # scroll display
                 self.text.focus()                          # select text widget
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

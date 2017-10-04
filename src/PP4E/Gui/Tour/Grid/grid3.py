@@ -1,7 +1,9 @@
 "add a label on the top and form resizing"
 
-from tkinter import *
+from tkinter import RIGHT, TOP, LEFT, YES, BOTH, RIDGE, SUNKEN, NSEW
+from tkinter import Tk, Frame, Label, Button, Entry, Toplevel, mainloop
 colors = ['red',  'white',  'blue']
+
 
 def gridbox(root):
     Label(root, text='Grid').grid(columnspan=2)
@@ -16,6 +18,7 @@ def gridbox(root):
     root.columnconfigure(0, weight=1)
     root.columnconfigure(1, weight=1)
 
+
 def packbox(root):
     Label(root, text='Pack').pack()
     for color in colors:
@@ -25,6 +28,7 @@ def packbox(root):
         row.pack(side=TOP,   expand=YES, fill=BOTH)
         lab.pack(side=LEFT,  expand=YES, fill=BOTH)
         ent.pack(side=RIGHT, expand=YES, fill=BOTH)
+
 
 root = Tk()
 gridbox(Toplevel(root))

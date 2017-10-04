@@ -1,6 +1,7 @@
 "demo all basic canvas interfaces"
 
-from tkinter import *
+from tkinter import Canvas, Label, PhotoImage, mainloop
+from tkinter import YES, BOTH, NW
 
 canvas = Canvas(width=525, height=300, bg='white')   # 0,0 is top left corner
 canvas.pack(expand=YES, fill=BOTH)                   # increases down, right

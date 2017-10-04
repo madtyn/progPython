@@ -1,5 +1,6 @@
 # add column sums, clearing
 
+import sys
 from tkinter import Button, Entry, Label, mainloop
 from tkinter import RIDGE, NSEW, SUNKEN, END
 numrow, numcol = 5, 4
@@ -45,7 +46,6 @@ def onClear():
         sum_.config(text='?')
 
 
-import sys
 Button(text='Sum', command=onSum).grid(row=numrow + 1, column=0)
 Button(text='Print', command=onPrint).grid(row=numrow + 1, column=1)
 Button(text='Clear', command=onClear).grid(row=numrow + 1, column=2)

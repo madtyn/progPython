@@ -1,11 +1,18 @@
 "a simple text or file viewer component"
 
+import sys
+
+from tkinter import Tk, Frame, Scrollbar, Text
+from tkinter import Y, YES, BOTH, RIGHT, LEFT, SUNKEN, END, INSERT
+
 print('PP4E scrolledtext')
-from tkinter import *
+
 
 class ScrolledText(Frame):
     def __init__(self, parent=None, text='', file=None):
-        Frame.__init__(self, parent)
+        # do superclass init
+        super().__init__(parent)  # Same as super(__class__, self, parent) and
+                                  # Frame.__init__(self, parent) from Python 2.x
         self.pack(expand=YES, fill=BOTH)                 # make me expandable
         self.makewidgets()
         self.settext(text, file)
@@ -30,12 +37,14 @@ class ScrolledText(Frame):
     def gettext(self):                                   # returns a string
         return self.text.get('1.0', END+'-1c')           # first through last
 
+
 if __name__ == '__main__':
     root = Tk()
     if len(sys.argv) > 1:
         st = ScrolledText(file=sys.argv[1])              # filename on cmdline
     else:
         st = ScrolledText(text='Words\ngo here')         # or not: two lines
+
     def show(event):
         print(repr(st.gettext()))                        # show as raw string
     root.bind('<Key-Escape>', show)                      # esc = dump text

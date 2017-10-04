@@ -12,7 +12,8 @@ class Quitter(Frame):  # subclass our GUI
     A smart quit Button
     '''
     def __init__(self, parent=None):  # constructor method
-        Frame.__init__(self, parent)
+        super().__init__(parent)
+        # Frame.__init__(self, parent)
         self.pack()
         widget = Button(self, text='Quit', command=self.quit)
         widget.pack(side=LEFT, expand=YES, fill=BOTH)

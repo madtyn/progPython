@@ -1,8 +1,9 @@
 """
 same, but use composition (embedding/attachment) instead of inheritance
 """
-
-from tkinter import *
+import sys
+from tkinter import X, LEFT, INSERT, END, SEL, SEL_FIRST, SEL_LAST
+from tkinter import Frame, Button, TclError
 from tkinter.simpledialog import askstring
 from tkinter.filedialog   import asksaveasfilename
 from quitter      import Quitter
@@ -10,7 +11,8 @@ from scrolledtext import ScrolledText                     # here, not Python's
 
 class SimpleEditor(Frame):                                # see PyEdit for more
     def __init__(self, parent=None, file=None):
-        Frame.__init__(self, parent)
+        super().__init__(parent)
+        #Frame.__init__(self, parent)
         self.pack()
         frm = Frame(self)
         frm.pack(fill=X)
@@ -53,6 +55,7 @@ class SimpleEditor(Frame):                                # see PyEdit for more
                 self.st.text.mark_set(INSERT, pastit)         # set insert mark
                 self.st.text.see(INSERT)                      # scroll display
                 self.st.text.focus()                          # select text widget
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

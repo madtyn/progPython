@@ -1,10 +1,12 @@
 "a simple vertically-scrollable canvas component and demo"
 
-from tkinter import *
+from tkinter import SUNKEN, BOTH, YES, Y, RIGHT, LEFT
+from tkinter import Frame, Canvas, Scrollbar
+
 
 class ScrolledCanvas(Frame):
     def __init__(self, parent=None, color='brown'):
-        Frame.__init__(self, parent)
+        super().__init__(parent) # Frame.__init__(self, parent)
         self.pack(expand=YES, fill=BOTH)                  # make me expandable
         canv = Canvas(self, bg=color, relief=SUNKEN)
         canv.config(width=300, height=200)                # display area size
@@ -29,4 +31,6 @@ class ScrolledCanvas(Frame):
         print(event.x, event.y)
         print(self.canvas.canvasx(event.x), self.canvas.canvasy(event.y))
 
-if __name__ == '__main__': ScrolledCanvas().mainloop()
+
+if __name__ == '__main__':
+    ScrolledCanvas().mainloop()

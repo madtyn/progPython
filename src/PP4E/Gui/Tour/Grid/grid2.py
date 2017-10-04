@@ -4,8 +4,10 @@ Labels and Entrys in packed column frames may not line up horizontally;
 same length code, though enumerate built-in could trim 2 lines off grid;
 """
 
-from tkinter import *
+from tkinter import RIDGE, SUNKEN, TOP, LEFT, RIGHT
+from tkinter import Tk, mainloop, Toplevel, Frame, Button, Label, Entry
 colors = ['red', 'green', 'orange', 'white', 'yellow', 'blue']
+
 
 def gridbox(parent):
     "grid by row/column numbers"
@@ -18,6 +20,7 @@ def gridbox(parent):
         ent.insert(0, 'grid')
         row += 1
 
+
 def packbox(parent):
     "row frames with fixed-width labels"
     for color in colors:
@@ -28,6 +31,7 @@ def packbox(parent):
         lab.pack(side=LEFT)
         ent.pack(side=RIGHT)
         ent.insert(0, 'pack')
+
 
 if __name__ == '__main__':
     root = Tk()

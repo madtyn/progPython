@@ -41,6 +41,7 @@ class CanvasEventsDemo(canvasDraw.CanvasEventsDemo):
                 self.canvas.update()              # force screen redraw/update
                 time.sleep(0.25)                  # pause, but don't block GUI
 
+
 if __name__ == '__main__':
     CanvasEventsDemo()
     mainloop()

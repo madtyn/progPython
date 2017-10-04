@@ -3,8 +3,9 @@ draw elastic shapes on a canvas on drag, move on right click;
 see canvasDraw_tags*.py for extensions with tags and animation
 """
 
-from tkinter import *
+from tkinter import Canvas, mainloop
 trace = False
+
 
 class CanvasEventsDemo:
     def __init__(self, parent=None):
@@ -41,6 +42,7 @@ class CanvasEventsDemo:
             diffX, diffY = (event.x - self.start.x), (event.y - self.start.y)
             canvas.move(self.drawn, diffX, diffY)
             self.start = event
+
 
 if __name__ == '__main__':
     CanvasEventsDemo()
